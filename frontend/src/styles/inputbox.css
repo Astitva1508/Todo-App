@@ -1,0 +1,56 @@
+#add{
+    height:53px;
+    width:53px;
+    border-radius: 50%;
+    background-color: rgb(45, 174, 45);
+    border:none;
+    position: relative;
+    right:30px;
+    margin-top:46px;
+    text-align: center;
+}
+@keyframes size {
+
+    0%,
+    45%{    transform:scale(1.15);
+    }
+
+    45%,
+    90% {
+        transform: scale(0.85);
+    }
+    90%,100%{
+        transform: scale(1);
+    }
+}
+
+#add i{
+    font-size:25px;
+    color:white
+}
+
+#add:focus{
+    animation: size 2s;
+}
+
+input{
+    margin-top: 50px;
+    height:45px;
+    width:35vw;
+    border:1px solid rgb(164, 158, 158);
+    border-radius:5px;
+    background-color: rgba(0, 0, 0, 0.06);
+    border:none;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid rgb(164, 158, 158);
+    background-color: white;
+}
+
+@media (max-width:576px) {
+    input {
+        width: 65vw
+    }
+}

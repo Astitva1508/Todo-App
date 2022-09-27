@@ -1,0 +1,24 @@
+.button-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    margin-bottom: 0;
+    display: flex;
+    width: 30vw;
+    justify-content: space-around;
+}
+
+.button-container p {
+    font-size: 2rem;
+    transition: all 0.2s;
+}
+
+.button-container p:active {
+    transform: scale(1.2);
+}
+
+@media (max-width:576px) {
+    .button-container {
+        width: 60vw;
+    }
+}

@@ -1,0 +1,15 @@
+.task {
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+    border-bottom: 0.75px solid rgb(37, 33, 33);
+    animation: 3s slide-right;
+}
+
+@media (max-width:576px) {
+
+    .task {
+        width: 60vw;
+    }
+
+}
