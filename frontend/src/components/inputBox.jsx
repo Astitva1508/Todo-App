@@ -1,37 +1,49 @@
-import {React,useState,useRef,useEffect} from 'react'
+import {React,useState,useReducer} from 'react'
 import '../styles/inputbox.css'
 import Message  from './message';
+import inputBoxReducer from '../reducers/inputBoxreducer';
 
 const InputBox=({onAdd})=>{
-    const [task,setTask] = useState('')
-    const [isVisible,setIsVisible]=useState(false)
-    const [message,setMessage]= useState(null);
+    const defaultState={
+        task:'',
+        isVisible:false,
+        message:null
+    }
+    const [state,dispatch]=useReducer(inputBoxReducer,defaultState)
 
     const handleSubmit=(e)=>{
         e.preventDefault()
-        if (task.length>20 || !task){
-            setMessage('Task must be provided and must be less than 20 characters')
-            setTimeout(()=>{setMessage(null)},3000)
+        if ((state.task).length>20 || !state.task){
+            dispatch({type:'CANT_POST'})
+            setTimeout(()=>dispatch({type:'SET_MESSAGE_NULL',payload:null}),3000)
         }
         else{
-            onAdd(task);
-            setTask('')
+            onAdd(state.task);
+            dispatch({type:'SET_TASK_NULL',payload:null})
         }
+    }
+
+    const handleFocus=()=>{
+        dispatch({type:'SHOW_PLUS_ICON'})
+    }
+
+    const handleChange=(e)=>{
+        dispatch({type:'HANDLE_TASK',payload:e.target.value})
     }
 
     return (
         <>
         <form className='mb-2' style={{display:'flex',justifyContent:'center'}}>
-            <input onFocus={()=>setIsVisible(true)} className='p-1'
-            value={task} onChange={(e)=>setTask(e.target.value)}
+            <input onFocus={handleFocus} className='p-1'
+            value={state.task} onChange={handleChange}
           />
-        { isVisible &&  <button type='submit' id='add' onClick={handleSubmit}>
+        { state.isVisible &&  <button type='submit' id='add' onClick={handleSubmit}>
                 <i class="fa-solid fa-plus"></i>
             </button>}
         </form>
-        {message && (
+        {state.message && (
 					<Message variant='warning' duration={10}>
-						{message}
+						{state.message}
 					</Message>
 				)}
     </>
