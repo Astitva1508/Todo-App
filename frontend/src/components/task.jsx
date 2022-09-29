@@ -8,7 +8,7 @@ const Task = ({task,isChecked:isTicked,_id}) => {
   const [isChecked,setIsChecked]=useState(isTicked);
 
   const editData=async(_id)=>{
-    await axios.patch('http://localhost:3000/api/v1/tasks/'+_id,{});
+    await axios.patch('http://localhost:4000/api/v1/tasks/'+_id,{});
   }
 
   const lineThrough=()=>{
@@ -20,7 +20,7 @@ const Task = ({task,isChecked:isTicked,_id}) => {
       <div className='p-2 task'>
           <div onClick={lineThrough} style={{textDecoration:isChecked && 'line-through',fontSize:'1.15rem'}}>{task}</div>
           <span>
-            {isChecked && <i class="fa-solid fa-check" style={{color:'green',fontSize:'24px'}}></i>}
+            {isChecked && <i className="fa-solid fa-check" style={{color:'green',fontSize:'24px'}}></i>}
           </span>
       </div>
   )

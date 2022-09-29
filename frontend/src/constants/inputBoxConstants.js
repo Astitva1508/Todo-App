@@ -1,0 +1,5 @@
+export const CANT_POST = 'CANT_POST'
+export const SET_MESSAGE_NULL = 'SET_MESSAGE_NULL'
+export const SET_TASK_NULL = 'SET_TASK_NULL'
+export const SHOW_PLUS_ICON = 'SHOW_PLUS_ICON'
+export const HANDLE_TASK = 'HANDLE_TASK'
